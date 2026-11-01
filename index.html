@@ -85,6 +85,13 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stro
 .thesis.wk.two{font-size:clamp(27px,7.4vw,33px);letter-spacing:-.035em;max-width:14em}
 .lede{margin:0;color:var(--ink-2);font-size:16px;max-width:32ch;text-wrap:pretty}
 .hero .lede{color:var(--ink);opacity:.75}
+.hero.compact{gap:10px}
+.hero.compact .phase{font-size:13px;color:var(--ink-2);letter-spacing:.01em;max-width:30ch;text-wrap:balance}
+.h-wk{margin:0;font-weight:500;font-size:clamp(26px,7vw,30px);line-height:1.08;letter-spacing:-.035em;text-wrap:balance;max-width:14em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.hero.compact .stage{margin-block:-6px -10px}
+.wkbar{width:100%;max-width:340px;height:6px;border-radius:3px;background:color-mix(in srgb,var(--ink) 10%,transparent);overflow:hidden}
+.wkbar u{display:block;height:100%;border-radius:3px;background:var(--ink);transition:width .6s cubic-bezier(.2,.8,.3,1)}
+.segbtn{min-height:44px;cursor:pointer}.segbtn svg.i{width:15px;height:15px;stroke-width:1.8}
 .stage{width:calc(100% + 32px);margin-inline:-16px}
 canvas.wave{display:block;width:100%;height:150px;color:var(--ink)}
 canvas.wave.sm{height:66px;margin-top:-6px}
@@ -111,12 +118,14 @@ canvas.wave.sm{height:66px;margin-top:-6px}
 .meta > * + *::before{content:"·";margin-right:6px;color:var(--ink-3)}
 .row h3{margin:0;font-size:18px;font-weight:500;line-height:1.2;letter-spacing:-.022em;text-wrap:pretty}
 .why{margin:0;font-size:15px;line-height:1.35;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.tick{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--ink-3);opacity:.6;flex:none;display:grid;place-items:center;margin-top:7px;color:transparent}
-.row.done .tick,.row.partial .tick{background:var(--btn);border-color:var(--btn);opacity:1;color:var(--btn-ink)}
+.tick{width:44px;height:44px;flex:none;display:grid;place-items:center;margin:-1px -8px 0 0;border-radius:50%;color:transparent}
+.tick i{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--ink-3);opacity:.6;display:grid;place-items:center;transition:background .2s,border-color .2s,transform .16s cubic-bezier(.3,.7,.4,1)}
+.tick:active i{transform:scale(.85)}
+.row.done .tick i,.row.partial .tick i{background:var(--btn);border-color:var(--btn);opacity:1;color:var(--btn-ink)}
 .row.done h3,.row.partial h3,.row.off h3{color:var(--ink-3)}
 .row.done .why,.row.off .why{display:none}
 .row.done .glyph,.row.partial .glyph,.row.off .glyph{filter:grayscale(1);opacity:.5}
-.row.off .tick{border-style:dashed;opacity:.35}
+.row.off .tick i{border-style:dashed;opacity:.35}
 .tick svg.i{width:13px;height:13px;stroke-width:2.8}
 .stat{font-size:13px;color:var(--ink-2);display:inline-flex;align-items:center;gap:5px}
 .stat.grey{color:var(--ink-3)}
@@ -130,6 +139,11 @@ canvas.wave.sm{height:66px;margin-top:-6px}
 .dayfield.set{color:var(--ink)}
 .dayfield svg.i{width:15px;height:15px}
 .dayflags{display:flex;gap:5px;flex-wrap:wrap;padding-inline:4px}
+details.oq > summary{list-style:none;cursor:pointer;min-height:44px}
+details.oq > summary::-webkit-details-marker{display:none}
+details.oq > summary span{display:inline-flex;align-items:center;gap:6px}
+details.oq > summary svg.i{width:14px;height:14px;transition:transform .2s}
+details.oq[open] > summary svg.i{transform:rotate(90deg)}
 .daynote{margin:-4px 4px 0;font-size:14px;line-height:1.4;color:var(--ink-2)}
 .daygap{height:4px}
 
@@ -339,6 +353,8 @@ body.locked{overflow:hidden}
 .mine{background:var(--soft);border-radius:20px;padding:14px 16px;font-size:16px;line-height:1.5;white-space:pre-wrap}
 .toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--btn);color:var(--btn-ink);padding:12px 20px;border-radius:999px;font-size:15px;font-weight:500;opacity:0;transition:.3s;z-index:40;pointer-events:none;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
 .toast.on{opacity:1;transform:translate(-50%,0)}
+.toast.undo{pointer-events:auto;display:flex;align-items:center;gap:14px;padding:6px 6px 6px 20px}
+.toast.undo button{background:color-mix(in srgb,var(--btn-ink) 16%,transparent);color:var(--btn-ink);border-radius:999px;padding:10px 16px;min-height:40px;font-weight:500}
 .skel{height:96px;border-radius:26px;background:linear-gradient(90deg,rgba(255,255,255,.35),rgba(255,255,255,.7),rgba(255,255,255,.35));background-size:200% 100%;animation:sh 1.4s infinite linear}
 @keyframes sh{to{background-position:-200% 0}}
 .synccard{display:flex;flex-direction:column;gap:10px;padding:18px}
@@ -531,7 +547,8 @@ function viewWoche(){
   if(w.testWeek)h+='<div class="banner">Testwoche. Inhalt aus '+esc((w.source||"").replace(/_.*$/,""))+', nicht der echte Plan.</div>';
   if(ro)h+='<div class="banner">Vergangene Woche. Nur lesen.</div>';
   var cnt={done:0,partial:0,skipped:0,adjusted:0};(w.sessions||[]).forEach(function(s){var x=st(s.id);if(cnt[x.status]!=null)cnt[x.status]++});
-  h+='<section class="hero">'+stepper(w)+'<span class="eyebrow">'+esc(w.phase)+'</span><h1 class="thesis wk'+(headlineOf(w).length>26?" two":"")+'">'+esc(headlineOf(w))+'</h1><div class="stage"><canvas class="wave" data-key="hero" data-p="'+p.toFixed(2)+'" role="img" aria-label="'+Math.round(p*100)+' Prozent der Woche geliefert"></canvas></div><p class="load"><b>'+esc(hm(dl))+' h</b> von '+esc(hm(pc))+' h geliefert</p><div class="segs"><span class="seg">Slots '+esc(hm(w.plannedMin||0))+' h</span><span class="seg">TSS '+esc(w.plannedTss||0)+'</span>'+(key?'<span class="seg on">Schlüssel '+esc(WD[wdi(st(key.id).movedTo?st(key.id).movedTo.date:key.date)])+'</span>':'')+(cnt.skipped?'<span class="seg">'+cnt.skipped+' ausgelassen</span>':'')+(cnt.adjusted?'<span class="seg">'+cnt.adjusted+' angepasst</span>':'')+'</div>'+(w.start<=TODAY&&TODAY<=w.end?'<button class="btn text" data-today="1">'+ic("today")+' Heute</button>':'')+'</section>';
+  var keyDay=key?WD[wdi(st(key.id).movedTo?st(key.id).movedTo.date:key.date)]:"";
+  h+='<section class="hero compact">'+stepper(w)+'<span class="phase">'+esc(w.phase)+'</span><h1 class="h-wk">'+esc(headlineOf(w))+'</h1><div class="stage"><canvas class="wave sm" data-key="hero" data-p="'+p.toFixed(2)+'" role="img" aria-label="'+Math.round(p*100)+' Prozent der Woche geliefert"></canvas></div><div class="wkbar" role="img" aria-label="'+esc(hm(dl))+' von '+esc(hm(pc))+' Stunden geliefert"><u style="width:'+Math.round(p*100)+'%"></u></div><p class="load"><b>'+esc(hm(dl))+'</b> von '+esc(hm(pc))+' h geliefert'+(cnt.skipped?' · '+cnt.skipped+' ausgelassen':'')+(cnt.adjusted?' · '+cnt.adjusted+' angepasst':'')+'</p><div class="segs">'+(key?'<span class="seg on">Schlüssel '+esc(keyDay)+'</span>':'')+'<span class="seg">TSS '+esc(w.plannedTss||0)+'</span>'+(w.start<=TODAY&&TODAY<=w.end?'<button class="seg segbtn" data-today="1">'+ic("today")+'Heute</button>':'')+'</div></section>';
   for(var i=0;i<7;i++){var date=addDays(w.start,i);h+=daySection(w,date,ro)}
   var frame=(w.objective&&w.objective!==headlineOf(w)?[w.objective]:[]).concat(w.context||[]);
   if(frame.length)h+='<details class="cuts" style="padding:4px 4px 0"><summary style="list-style:none;cursor:pointer;display:flex;justify-content:center;align-items:center;gap:6px;min-height:44px;font-size:15px;color:var(--ink-2)"><span>Rahmen der Woche</span>'+ic("r")+'</summary><ul class="qs" style="margin-top:12px">'+frame.map(function(c){return '<li>'+esc(c)+'</li>'}).join("")+'</ul></details>';
@@ -556,12 +573,13 @@ function statusLine(s){var x=s.x||st(s.id);if(x.status==="done")return '<span cl
   if(x.status==="skipped")return '<span class="stat grey">ausgelassen'+(x.skipReason?" · "+esc(x.skipReason):"")+'</span>';
   if(x.status==="adjusted")return '<span class="stat grey">angepasst'+(x.skipReason?" · "+esc(x.skipReason):"")+'</span>';return ""}
 function rowClass(s){var x=s.x||st(s.id);return x.status==="done"?" done":x.status==="partial"?" partial":(x.status==="skipped"||x.status==="adjusted")?" off":""}
-function sessionCard(s){var tl=timeLabel(s);return '<button class="row'+rowClass(s)+'" data-session="'+esc(s.id)+'"><span class="glyph '+esc(s.sport)+'">'+sportIcon(s)+'</span><span class="row-b"><span class="meta"><em>'+esc(SLOTS[s.effSlot]||s.effSlot)+(tl?" "+esc(tl):"")+'</em><span>'+esc(mins(s.durationMin))+'</span>'+(s.shoe?'<span>'+esc(s.shoe)+'</span>':'')+(s.moved?'<span>verschoben von '+esc(WD[wdi(s.date)])+'</span>':'')+'</span><h3>'+esc(cleanTitle(s.title))+'</h3>'+(s.steer?'<p class="why">'+esc(s.steer)+'</p>':'')+statusLine(s)+'</span><span class="tick">'+ic("check")+'</span></button>'}
+function sessionCard(s){var tl=timeLabel(s);return '<button class="row'+rowClass(s)+'" data-session="'+esc(s.id)+'"><span class="glyph '+esc(s.sport)+'">'+sportIcon(s)+'</span><span class="row-b"><span class="meta"><em>'+esc(SLOTS[s.effSlot]||s.effSlot)+(tl?" "+esc(tl):"")+'</em><span>'+esc(mins(s.durationMin))+'</span>'+(s.shoe?'<span>'+esc(s.shoe)+'</span>':'')+(s.moved?'<span>verschoben von '+esc(WD[wdi(s.date)])+'</span>':'')+'</span><h3>'+esc(cleanTitle(s.title))+'</h3>'+(s.steer?'<p class="why">'+esc(s.steer)+'</p>':'')+statusLine(s)+'</span><span class="tick"'+(readOnly(S.weeks[s.kw])?'':' data-quick="'+esc(s.id)+'" role="button" aria-label="'+((s.x||st(s.id)).status==="done"?"Wieder offen":"Erledigt")+'"')+'><i>'+ic("check")+'</i></span></button>'}
 function keyCard(s){var x=s.x||st(s.id);var cls=x.status==="done"||x.status==="partial"?" done":(x.status==="skipped"||x.status==="adjusted")?" off":"";var tl=timeLabel(s);
   return '<button class="practice'+cls+'" data-session="'+esc(s.id)+'"><span class="glyph '+esc(s.sport)+'">'+sportIcon(s)+'</span><span class="keytag">Schlüsseleinheit</span><span class="meta"><em>'+esc(SLOTS[s.effSlot]||s.effSlot)+(tl?" "+esc(tl):"")+'</em><span>'+esc(mins(s.durationMin))+'</span>'+(s.tss?'<span>TSS '+s.tss+'</span>':'')+(s.moved?'<span>verschoben von '+esc(WD[wdi(s.date)])+'</span>':'')+'</span><h3>'+esc(s.title)+'</h3>'+(s.steer?'<p>'+esc(s.steer)+'</p>':'')+(x.status&&x.status!=="open"?statusLine(s):'<span class="pill">Öffnen '+ic("r")+'</span>')+'</button>'}
 function restCard(s){return '<div class="resurface"><span class="glyph">'+ic("rest")+'</span><span><strong>'+esc(s.title)+'</strong><small>'+esc((s.blocks[0]||{}).text||"Im Plan als Ruhetag gesetzt.")+'</small></span></div>'}
 function questionsSection(w,ro){var qsn=w.openQuestions||[];if(!qsn.length)return "";var ans=((S.state.weeks[w.kw]||{}).answers)||{};
-  return '<section class="sec"><div class="sec-h"><h2>Offene Fragen</h2><span>'+Object.keys(ans).filter(function(k){return ans[k]}).length+' von '+qsn.length+' beantwortet</span></div><ul class="qs">'+qsn.map(function(q){return '<li class="q"><span>'+esc(q.q)+'</span>'+(ro&&!ans[q.id]?'':'<input type="text" data-answer="'+esc(q.id)+'" value="'+esc(ans[q.id]||"")+'" placeholder="Antwort" autocomplete="off"'+(ro?' readonly':'')+'>')+'</li>'}).join("")+'</ul><p class="note" style="text-align:left">Antworten gehen in den State und landen im Ist-Bericht fürs Ritual.</p></section>'}
+  var na=Object.keys(ans).filter(function(k){return ans[k]}).length;
+  return '<details class="sec oq"'+(S.oqOpen?' open':'')+'><summary class="sec-h"><h2>Fürs Ritual</h2><span>'+na+' von '+qsn.length+' beantwortet '+ic("r")+'</span></summary><p class="note" style="text-align:left;margin-top:-2px">Offene Fragen aus dem letzten Plan. Ein Wort je Frage reicht.</p><ul class="qs">'+qsn.map(function(q){return '<li class="q"><span>'+esc(q.q)+'</span>'+(ro&&!ans[q.id]?'':'<input type="text" data-answer="'+esc(q.id)+'" value="'+esc(ans[q.id]||"")+'" placeholder="Antwort" autocomplete="off"'+(ro?' readonly':'')+'>')+'</li>'}).join("")+'</ul><p class="note" style="text-align:left">Antworten gehen in den State und landen im Ist-Bericht fürs Ritual.</p></section>'}
 function syncStat(){var s=S.sync.status,at=S.sync.at||ls("syncAt");return '<div class="st" id="syncstat"><i class="'+(s==="ok"?"ok":s==="err"?"err":"")+'"></i>'+(s==="busy"?"Synchronisiert…":s==="err"?esc(S.sync.msg):at?"Synchron, "+fmtAgo(at):"Verbunden")+'</div>'}
 function fmtAgo(isoStr){if(!isoStr)return "";var m=Math.round((Date.now()-new Date(isoStr))/6e4);return m<1?"gerade eben":m<60?"vor "+m+" min":m<1440?"vor "+Math.round(m/60)+" h":"vor "+Math.round(m/1440)+" Tagen"}
 function syncSection(){return '<section class="sec"><div class="sec-h"><h2>Verbindung</h2></div><div class="group"><div class="synccard">'+(S.gh?syncStat()+'<p>Plan und Erfassung liegen im privaten Repository. Dieses Gerät holt beim Öffnen und schiebt nach jeder Änderung.</p><div class="btns"><button class="chipbtn ok" data-sync-now="1">Jetzt synchronisieren</button><button class="chipbtn" data-disconnect="1">Trennen</button></div>':'<div class="st"><i></i>Nicht verbunden</div><p>Ohne Schlüssel zeigt diese Seite nichts. Verbinden dauert drei Minuten, einmal je Gerät.</p><div class="btns"><button class="chipbtn ok" data-connect="1">Verbinden</button></div>')+'</div></div></section>'}
@@ -705,13 +723,20 @@ function renderSheet(){var sh=S.sheet;if(!sh)return;var el=isWide()?$("#panel-in
     h=sheetTop('<span>'+esc(fmtDL(d))+'</span>')+'<h2>Nacht und Gewicht.</h2>'+(win?'<div class="rule soft">'+ic("moon")+'<span>Ziel für die Nacht auf '+esc(WD[wdi(d)])+': ins Bett zwischen '+esc(win.replace("-"," und "))+(dd.earlyAlarm?". Frühtag, deshalb die frühe Hälfte":"")+'.</span></div>':'')+'<div class="field"><label>Ins Bett gegangen am '+esc(WDL[wdi(prev)])+' um</label><input type="time" id="bedtime" value="'+esc(ds.bedtime||"")+'"></div><div class="field inline"><label style="flex:none;min-width:90px">Schlaf</label><input type="number" inputmode="decimal" step="0.1" id="sleepH" value="'+esc(ds.sleepH==null?"":ds.sleepH)+'" placeholder="optional"><span class="unit">h</span></div><div class="field inline"><label style="flex:none;min-width:90px">Gewicht</label><input type="number" inputmode="decimal" step="0.1" id="weight" value="'+esc(ds.weight==null?"":ds.weight)+'" placeholder="nüchtern"><span class="unit">Kilo</span></div><div class="stack dock"><button class="btn full" data-save-day="'+d+'">Speichern</button></div>'}
   else if(sh.type==="connect"){h=sheetTop("Verbinden")+'<h2>Schlüssel für dieses Gerät.</h2><p class="lede" style="max-width:none">Plan und Erfassung liegen im privaten Repository trainingswoche-data. Die App braucht einen Schlüssel, der nur dieses eine Repository lesen und schreiben darf.</p><ol class="olist"><li>Öffne <b>github.com/settings/personal-access-tokens/new</b>, angemeldet als benebxr.</li><li>Name: <b>trainingswoche iPhone</b> oder <b>trainingswoche iPad</b>. Ablauf: <b>No expiration</b>.</li><li>Repository access: <b>Only select repositories</b>, wähle <b>trainingswoche-data</b>.</li><li>Repository permissions: <b>Contents: Read and write</b>. Sonst nichts.</li><li>Generate, Schlüssel kopieren, unten einfügen.</li></ol><input type="password" class="key" id="ghKey" placeholder="github_pat_…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="GitHub-Schlüssel"><p class="note" style="text-align:left">Der Schlüssel bleibt auf diesem Gerät. Beim Trennen werden Schlüssel und alle geladenen Daten hier gelöscht.</p><div class="stack"><button class="btn full" data-connect-save="1">Verbinden</button><button class="btn text full" data-close="1">Nicht jetzt</button></div>'}
   var keep=sh.keepScroll?el.scrollTop:0;sh.keepScroll=false;el.className=(isWide()?'panel-in':'sheet')+(out?' s-out':'');el.innerHTML=h;el.scrollTop=keep}
-function toast(t){var e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove("on")},2400)}
+function toast(t){var e=$("#toast");e.classList.remove("undo");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove("on")},2400)}
+function toastUndo(t,fn){var e=$("#toast");e.innerHTML='<span>'+esc(t)+'</span><button data-undo="1">Rückgängig</button>';e.classList.add("undo","on");toastUndo.fn=fn;clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove("on","undo");toastUndo.fn=null},4500)}
+function quickTick(id){var s=sessionById(id);if(!s)return;var before=clone(S.state.sessions[id]||null),x=st(id);
+  if(x.status==="done"){saveSession(id,function(e){e.status="open";e.doneAt=null});render();toastUndo("Wieder offen",function(){restore(id,before)});return}
+  if(x.status&&x.status!=="open"){openSheet({type:"session",id:id,step:"detail"});return}
+  saveSession(id,function(e){e.status="done";e.actualMin=s.durationMin;e.doneAt=now()});render();toastUndo("Erledigt, "+mins(s.durationMin),function(){restore(id,before)})}
+function restore(id,before){if(before){before.updatedAt=now();S.state.sessions[id]=before}else{S.state.sessions[id]={status:"open",updatedAt:now()}}persist();render();var e=$("#toast");e.classList.remove("on","undo")}
 function readDetails(s,x,mode){var e=clone(x);var am=$("#actualMin");var v=am?parseInt(am.value,10):NaN;e.actualMin=isNaN(v)?s.durationMin:v;if(S.sheet.rpe!=null)e.rpe=S.sheet.rpe;var nt=$("#noteText");if(nt)e.note=nt.value.trim();e.answers=e.answers||{};
   (s.asks||[]).forEach(function(a){if(a.type==="yesno"||a.type==="check"){if(S.sheet.yn&&a.id in S.sheet.yn)e.answers[a.id]=S.sheet.yn[a.id];return}if(a.type==="choice"){if(S.sheet.ch&&a.id in S.sheet.ch){if(S.sheet.ch[a.id])e.answers[a.id]=S.sheet.ch[a.id];else delete e.answers[a.id]}return}var inp=$("#ask-"+a.id);if(!inp)return;var val=inp.value.trim();if(!val){delete e.answers[a.id];return}if(a.type==="number")e.answers[a.id]=parseFloat(val.replace(",","."));else if(a.type==="numberList")e.answers[a.id]=val.split(/[,;\s]+/).filter(Boolean).map(function(n){return parseFloat(n.replace(",","."))});else e.answers[a.id]=val});
   if(mode==="partial")e.cut=S.sheet.cut||e.cut||[];return e}
 
 /* ---------- events ---------- */
-document.addEventListener("click",function(ev){var wk=ev.target.closest&&ev.target.closest("[data-week]");if(wk&&S.view==="steuerung"){S.selWeek=wk.getAttribute("data-week");var sv=window.scrollY;render();window.scrollTo(0,sv);return}
+document.addEventListener("click",function(ev){var qk=ev.target.closest&&ev.target.closest("[data-quick]");if(qk){ev.preventDefault();quickTick(qk.getAttribute("data-quick"));return}
+  if(ev.target.closest&&ev.target.closest("[data-undo]")){if(toastUndo.fn)toastUndo.fn();toastUndo.fn=null;return}var wk=ev.target.closest&&ev.target.closest("[data-week]");if(wk&&S.view==="steuerung"){S.selWeek=wk.getAttribute("data-week");var sv=window.scrollY;render();window.scrollTo(0,sv);return}
   var t=ev.target.closest("button,[data-close]");if(ev.target.id==="backdrop")return closeSheet();if(!t)return;var d=t.dataset;
   if(d.vol){S.vol=d.vol==="tss"?"tss":"h";ls("vol",S.vol);var sv2=window.scrollY;render();window.scrollTo(0,sv2);return}
   if(d.tab){var same=S.view===d.tab;S.view=d.tab;render();window.scrollTo(0,0);if(!same){var ap=$("#app");ap.classList.add("enter");setTimeout(function(){ap.classList.remove("enter")},700)}return}
@@ -748,7 +773,8 @@ document.addEventListener("click",function(ev){var wk=ev.target.closest&&ev.targ
   if(d.unmove){saveSession(d.unmove,function(x){x.movedTo=null});closeSheet();toast("Zurück auf den Plan");return}
   if(d.saveDay){var bt=(($("#bedtime")||{}).value||"").trim(),slp=(($("#sleepH")||{}).value||"").trim(),wt=(($("#weight")||{}).value||"").trim();saveDay(d.saveDay,function(x){x.bedtime=bt||null;x.sleepH=slp?parseFloat(slp.replace(",",".")):null;x.weight=wt?parseFloat(wt.replace(",",".")):null});closeSheet();toast("Gespeichert");return}
 });
-document.addEventListener("change",function(ev){var t=ev.target;if(t&&t.dataset&&t.dataset.answer!==undefined){var kw=S.kw,v=t.value.trim(),id=t.dataset.answer;saveWeek(kw,function(x){if(v)x.answers[id]=v;else delete x.answers[id]});var hdr=t.closest(".sec")&&t.closest(".sec").querySelector(".sec-h span");if(hdr){var ans=S.state.weeks[kw].answers;hdr.textContent=Object.keys(ans).filter(function(k){return ans[k]}).length+" von "+(week().openQuestions||[]).length+" beantwortet"}}
+document.addEventListener("toggle",function(ev){if(ev.target&&ev.target.classList&&ev.target.classList.contains("oq"))S.oqOpen=ev.target.open},true);
+document.addEventListener("change",function(ev){var t=ev.target;if(t&&t.dataset&&t.dataset.answer!==undefined){var kw=S.kw,v=t.value.trim(),id=t.dataset.answer;saveWeek(kw,function(x){if(v)x.answers[id]=v;else delete x.answers[id]});var hdr=t.closest(".sec")&&t.closest(".sec").querySelector(".sec-h span");if(hdr){var ans=S.state.weeks[kw].answers;hdr.innerHTML=Object.keys(ans).filter(function(k){return ans[k]}).length+" von "+(week().openQuestions||[]).length+" beantwortet "+ic("r")}}
   if(t&&t.id==="moveTime"&&S.sheet&&S.sheet.step==="move"){S.sheet.time=t.value;renderSheet()}});
 (function(){var sh=$("#sheet"),g=null;
   sh.addEventListener("touchstart",function(e){var t=e.target;if(sh.scrollTop>0||/^(TEXTAREA|INPUT)$/.test(t.tagName)){g=null;return}g={y:e.touches[0].clientY,dy:0,t:Date.now()}},{passive:true});
