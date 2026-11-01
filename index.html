@@ -172,6 +172,8 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
 .btn.text{background:none;color:var(--ink-2);font-weight:400;padding:10px;min-height:44px;font-size:16px}
 .btn[disabled]{opacity:.4;cursor:default}
 .btn-row{display:flex;gap:8px}.btn-row .btn{flex:1;padding-inline:12px;white-space:normal}
+.btn-row.three .btn{padding-inline:8px;font-size:15px;min-height:50px;gap:5px}
+.btn-row.three .btn svg.i{width:17px;height:17px}
 .chipbtn{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:500;padding:11px 20px;border-radius:999px;background:var(--soft);color:var(--ink);min-height:44px}
 .chipbtn.ok,.chipbtn.on{background:var(--btn);color:var(--btn-ink)}
 .chipbtn svg.i{width:15px;height:15px;stroke-width:2.6}
@@ -258,7 +260,63 @@ table.vol th:first-child,table.vol td:first-child{text-align:left;color:var(--in
 .qs li.q{display:flex;flex-direction:column;gap:8px}
 .qs li.q input{background:var(--card-solid)}
 .qs li .qa{display:flex;gap:8px;align-items:center}
-ol.cut{margin:0;padding-left:22px;font-size:16px;line-height:1.5;color:var(--ink);display:flex;flex-direction:column;gap:4px}
+ol.cut{margin:0;padding-left:22px;font-size:15px;line-height:1.45;color:var(--ink);display:flex;flex-direction:column;gap:2px}
+/* Ablauf als Schritte */
+.sec-mini{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.sec-mini h3{margin:0;font-size:20px;font-weight:500;letter-spacing:-.025em}
+.sec-mini span{font-size:14px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.sec-mini button{font-size:14px;color:var(--ink-2);min-height:44px;padding:0 4px}
+.stps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.stp{display:flex;gap:12px;align-items:flex-start;width:100%;padding:14px 14px 14px 12px;border-radius:22px;background:var(--card-solid);box-shadow:inset 0 0 0 1px var(--line);text-align:left;transition:background .2s,opacity .2s,transform .16s cubic-bezier(.3,.7,.4,1)}
+button.stp:active{transform:scale(.985)}
+.stp .no{width:32px;height:32px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:14px;font-weight:500;color:var(--ink-2);box-shadow:inset 0 0 0 1.5px var(--ink-3);font-variant-numeric:tabular-nums;margin-top:1px}
+.stp .no svg.i{width:14px;height:14px;stroke-width:2.8}
+.stp .sb{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.stp .nm{font-size:17px;font-weight:500;line-height:1.25;letter-spacing:-.015em;color:var(--ink)}
+.stp .dz{font-size:17px;line-height:1.3;color:var(--ink);font-variant-numeric:tabular-nums}
+.stp .dz b{font-weight:500}
+.stp .dz em{font-style:normal;color:var(--ink-2)}
+.stp .cu{font-size:14px;line-height:1.4;color:var(--ink-2)}
+.stp .nt{font-size:14px;line-height:1.4;color:var(--ink-3);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;-webkit-user-select:text;user-select:text}
+.stp.cur{background:var(--in-soft);box-shadow:inset 0 0 0 1.5px var(--in)}
+.stp.cur .no{background:var(--in);color:#fff;box-shadow:none}
+.stp.cur .nt{-webkit-line-clamp:unset;display:block;color:var(--ink-2)}
+.stp .now{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--in)}
+.stp.ok{opacity:.55;background:transparent}
+.stp.ok .no{background:var(--btn);color:var(--btn-ink);box-shadow:none}
+.stp.ok .nm,.stp.ok .dz{color:var(--ink-3)}
+.stp.ok .cu,.stp.ok .nt{display:none}
+.stp.edge .nm{font-weight:400;color:var(--ink-2)}
+.stp.edge .dz{font-size:15px;color:var(--ink-2)}
+.stp.chk{padding-block:10px}
+.stp.chk .nm{font-size:16px;font-weight:400}
+.hints{list-style:none;margin:0;padding:4px 16px;display:flex;flex-direction:column}
+.hints li{padding:12px 0;font-size:15px;line-height:1.45;color:var(--ink-2);-webkit-user-select:text;user-select:text}
+.hints li + li{border-top:1px solid var(--line)}
+.hints li b{display:block;color:var(--ink);font-weight:500;font-size:14px;margin-bottom:2px}
+details.bg summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:6px;font-size:15px;color:var(--ink-2)}
+details.bg summary::-webkit-details-marker{display:none}
+details.bg summary svg.i{width:14px;height:14px;transition:transform .2s}
+details.bg[open] summary svg.i{transform:rotate(90deg)}
+details.bg p{margin:0;font-size:15px;line-height:1.5;color:var(--ink-2);-webkit-user-select:text;user-select:text}
+.steerline{margin:0;font-size:16px;line-height:1.4;color:var(--ink-2)}
+.steerline b{color:var(--ink);font-weight:500}
+/* Fragen fuers Debrief */
+.asks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.asks li{background:var(--soft);border-radius:20px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.asks .aq{font-size:16px;line-height:1.35;font-weight:500;color:var(--ink);letter-spacing:-.01em}
+.asks .aw{font-size:13px;line-height:1.4;color:var(--ink-3);margin-top:-4px}
+.asks input{background:var(--card-solid)}
+.asks .chipbtn{background:var(--card-solid);box-shadow:inset 0 0 0 1px var(--line)}
+.asks .chipbtn.on{background:var(--btn);color:var(--btn-ink);box-shadow:none}
+.asks .unitrow{display:flex;align-items:center;gap:10px}.asks .unitrow input{flex:1;min-width:0}.asks .unitrow span{font-size:14px;color:var(--ink-2);white-space:nowrap}
+.chkrow{display:flex;gap:12px;align-items:flex-start;width:100%;min-height:44px;padding:12px 14px;border-radius:20px;background:var(--soft);text-align:left}
+.chkrow .bx{width:26px;height:26px;border-radius:8px;flex:none;display:grid;place-items:center;box-shadow:inset 0 0 0 1.5px var(--ink-3);color:transparent;margin-top:1px}
+.chkrow.on .bx{background:var(--btn);box-shadow:none;color:var(--btn-ink)}
+.chkrow .bx svg.i{width:14px;height:14px;stroke-width:2.8}
+.chkrow .cb{display:flex;flex-direction:column;gap:2px}
+.chkrow .cb b{font-size:16px;font-weight:500;color:var(--ink)}
+.chkrow .cb small{font-size:13px;line-height:1.4;color:var(--ink-3)}
 .never{font-size:15px;color:var(--ink-2)}.never b{color:var(--ink);font-weight:500}
 .stack{display:flex;flex-direction:column;gap:8px}
 .dock{position:sticky;bottom:calc(-24px - env(safe-area-inset-bottom,0px));margin:0 -20px calc(-24px - env(safe-area-inset-bottom,0px));padding:22px 20px calc(20px + env(safe-area-inset-bottom,0px));background:linear-gradient(to bottom,transparent,var(--card-solid) 22px)}
@@ -575,16 +633,40 @@ function openSheet(s){S.sheet=s;if(isWide()){renderSheet();$("#panel-in").scroll
 function panelEmpty(){var el=$("#panel-in");if(!el)return;var w=S.kw&&S.weeks[S.kw];el.innerHTML='<div class="panel-empty"><canvas class="wave" data-key="panel" data-p="0.35"></canvas><b>'+(w?esc(w.phase):"Trainingswoche")+'</b><span>Tippe links auf eine Einheit. Hier stehen Gate, Kürzungsreihenfolge und alle Blöcke, und hier hakst du ab.</span></div>'}
 function closeSheet(){if(isWide()){S.sheet=null;panelEmpty();render();return}var b=$("#backdrop");b.classList.remove("open");document.body.classList.remove("locked");var sh=$("#sheet");sh.style.transition="";sh.style.transform="";setTimeout(function(){b.hidden=true;S.sheet=null;render()},380)}
 function sheetTop(label){return '<div class="grab"></div><div class="sheet-top"><span class="step">'+label+'</span><button class="x" data-close="1" aria-label="Schließen">'+ic("x")+'</button></div>'}
+function stepHtml(st,i,state,ro){var cls="stp"+(state==="ok"?" ok":state==="cur"?" cur":"")+((st.kind==="warmup"||st.kind==="cooldown")?" edge":"")+(st.kind==="check"?" chk":"");
+  var title=st.name||[st.dose,st.target?("@ "+st.target):""].filter(Boolean).join(" ");var dz="";
+  if(st.name&&(st.dose||st.target))dz='<span class="dz">'+(st.dose?'<b>'+esc(st.dose)+'</b>':'')+(st.target?(st.dose?' <em>@</em> ':'')+esc(st.target):'')+'</span>';
+  var inner='<span class="no">'+(state==="ok"?ic("check"):(i+1))+'</span><span class="sb">'+(state==="cur"?'<span class="now">Als Nächstes</span>':'')+'<span class="nm">'+esc(title)+'</span>'+dz+((st.cues||[]).length?'<span class="cu">'+esc(st.cues.join(" · "))+'</span>':'')+(st.note?'<span class="nt">'+esc(st.note)+'</span>':'')+'</span>';
+  return ro?'<li><div class="'+cls+'">'+inner+'</div></li>':'<li><button class="'+cls+'" data-stp="'+i+'" aria-pressed="'+(state==="ok")+'">'+inner+'</button></li>'}
+function stepsHtml(s,x,ro){var steps=s.steps||[];if(!steps.length)return "";var done=x.steps||[];var cur=-1;
+  for(var i=0;i<steps.length;i++){if(done.indexOf(i)<0&&steps[i].kind!=="check"){cur=i;break}}
+  if(ro||!done.length)cur=ro?-1:cur;
+  var checks=[],main=[];steps.forEach(function(st,i){(st.kind==="check"?checks:main).push(i)});
+  var n=main.filter(function(i){return done.indexOf(i)>=0}).length;
+  var h='<section class="block"><div class="sec-mini"><h3>Ablauf</h3>'+(ro?'<span>'+main.length+' Schritte</span>':(done.length?'<button data-stp-reset="1">'+n+' von '+main.length+' · zurücksetzen</button>':'<span>Tippen hakt ab</span>'))+'</div>';
+  if(checks.length)h+='<ul class="stps">'+checks.map(function(i){return stepHtml(steps[i],i,done.indexOf(i)>=0?"ok":"",ro)}).join("")+'</ul>';
+  h+='<ol class="stps">'+main.map(function(i){return stepHtml(steps[i],i,done.indexOf(i)>=0?"ok":(i===cur?"cur":""),ro)}).join("")+'</ol></section>';return h}
+function hintsHtml(s){var items=[],vor=null;
+  (s.blocks||[]).forEach(function(b){if(b.label==="Vorab"){vor=b.text;return}if(b.label==="Ablauf"&&!(s.steps||[]).length){items.push({l:"Ablauf",t:b.text});return}items.push({l:b.label,t:b.text})});
+  if(s.nutrition)items.push({l:"Ernährung",t:s.nutrition.replace(/^(Ernährung|Fueling):\s*/,"")});
+  var h="";if(items.length)h+='<section class="block"><div class="sec-mini"><h3>Hinweise</h3></div><div class="group"><ul class="hints">'+items.map(function(it){return '<li><b>'+esc(it.l.replace(/^\.fit$/,"Datei (.fit)"))+'</b>'+esc(it.t)+'</li>'}).join("")+'</ul></div></section>';
+  if(vor)h+='<details class="bg"><summary><span>Hintergrund zur Einheit</span>'+ic("r")+'</summary><p>'+esc(vor)+'</p></details>';return h}
 function askInput(a,val){var id="ask-"+esc(a.id);
+  if(a.type==="choice")return '<div class="chiprow">'+(a.options||[]).map(function(o){return '<button class="chipbtn'+(val===o?" on":"")+'" data-ask-ch="'+esc(a.id)+'" data-v="'+esc(o)+'">'+esc(o)+'</button>'}).join("")+'</div>';
+  if(a.unit&&(a.type==="number"||a.type==="numberList"||a.type==="text")){var inner=askInput({id:a.id,type:a.type,placeholder:a.placeholder},val);return '<div class="unitrow">'+inner+'<span>'+esc(a.unit)+'</span></div>'}
   if(a.type==="yesno")return '<div class="qa"><button class="chipbtn'+(val===true?" on":"")+'" data-ask-yn="'+esc(a.id)+'" data-v="1">Ja</button><button class="chipbtn'+(val===false?" on":"")+'" data-ask-yn="'+esc(a.id)+'" data-v="0">Nein</button></div>';
-  if(a.type==="number")return '<input type="number" inputmode="decimal" step="any" id="'+id+'" data-ask="'+esc(a.id)+'" value="'+esc(val==null?"":val)+'" placeholder="Zahl">';
-  if(a.type==="numberList")return '<input type="text" inputmode="decimal" id="'+id+'" data-ask="'+esc(a.id)+'" value="'+esc(Array.isArray(val)?val.join(", "):(val==null?"":val))+'" placeholder="z. B. 36, 36, 37" autocomplete="off">';
-  return '<input type="text" id="'+id+'" data-ask="'+esc(a.id)+'" value="'+esc(val==null?"":val)+'" placeholder="Antwort" autocomplete="off">'}
+  if(a.type==="number")return '<input type="number" inputmode="decimal" step="any" id="'+id+'" data-ask="'+esc(a.id)+'" value="'+esc(val==null?"":val)+'" placeholder="'+esc(a.placeholder||"Zahl")+'">';
+  if(a.type==="numberList")return '<input type="text" inputmode="decimal" id="'+id+'" data-ask="'+esc(a.id)+'" value="'+esc(Array.isArray(val)?val.join(", "):(val==null?"":val))+'" placeholder="'+esc(a.placeholder||"z. B. 36, 36, 37")+'" autocomplete="off">';
+  return '<input type="text" id="'+id+'" data-ask="'+esc(a.id)+'" value="'+esc(val==null?"":val)+'" placeholder="'+esc(a.placeholder||"Antwort")+'" autocomplete="off">'}
+function asksHtml(s,x){var asks=s.asks||[],ans=x.answers||{};var checks=asks.filter(function(a){return a.type==="check"}),qs=asks.filter(function(a){return a.type!=="check"});var h="";
+  if(checks.length)h+='<div class="block"><h4>Nach der Einheit</h4><div class="stack">'+checks.map(function(a){var on=(S.sheet.yn&&a.id in S.sheet.yn)?S.sheet.yn[a.id]:ans[a.id]===true;return '<button class="chkrow'+(on?" on":"")+'" data-ask-chk="'+esc(a.id)+'" aria-pressed="'+on+'"><span class="bx">'+ic("check")+'</span><span class="cb"><b>'+esc(a.q)+'</b>'+(a.why?'<small>'+esc(a.why)+'</small>':'')+'</span></button>'}).join("")+'</div></div>';
+  if(qs.length)h+='<div class="block"><h4>Für das Debrief, freiwillig</h4><ul class="asks">'+qs.map(function(a){var v=ans[a.id];if(a.type==="yesno"&&S.sheet.yn&&a.id in S.sheet.yn)v=S.sheet.yn[a.id];if(a.type==="choice"&&S.sheet.ch&&a.id in S.sheet.ch)v=S.sheet.ch[a.id];return '<li><span class="aq">'+esc(a.q)+'</span>'+(a.why?'<span class="aw">'+esc(a.why)+'</span>':'')+askInput(a,v)+'</li>'}).join("")+'</ul><p class="note" style="text-align:left">Die Antworten landen im Wochenbericht fürs Sonntagsritual. Leer lassen ist in Ordnung.</p></div>';
+  return h}
 function detailForm(s,x,mode){var dur=x.actualMin!=null?x.actualMin:s.durationMin;var h='';
   h+='<div class="field inline"><label style="flex:none;min-width:90px">Dauer</label><input type="number" inputmode="numeric" id="actualMin" value="'+esc(dur)+'" min="0" step="1"><span class="unit">min</span></div>';
   if(mode==="partial"&&(s.cutOrder||[]).length)h+='<div class="block"><h4>Was gestrichen wurde</h4><div class="chiprow">'+s.cutOrder.map(function(c,i){return '<button class="chipbtn'+((x.cut||[]).indexOf(i)>=0?" on":"")+'" data-cut="'+i+'">'+(i+1)+' '+esc(c)+'</button>'}).join("")+'</div></div>';
-  h+='<div class="block"><h4>RPE</h4><div class="rpe">'+[1,2,3,4,5,6,7,8,9,10].map(function(n){return '<button class="chipbtn'+(x.rpe===n?" on":"")+'" data-rpe="'+n+'">'+n+'</button>'}).join("")+'</div></div>';
-  if((s.asks||[]).length)h+='<div class="block"><h4>Meldung fürs Ritual</h4><ul class="qs">'+s.asks.map(function(a){return '<li class="q"><span>'+esc(a.q)+'</span>'+askInput(a,(x.answers||{})[a.id])+'</li>'}).join("")+'</ul></div>';
+  h+='<div class="block"><h4>Wie anstrengend war die Einheit insgesamt? 1 sehr leicht, 10 maximal</h4><div class="rpe">'+[1,2,3,4,5,6,7,8,9,10].map(function(n){return '<button class="chipbtn'+(x.rpe===n?" on":"")+'" data-rpe="'+n+'">'+n+'</button>'}).join("")+'</div></div>';
+  h+=asksHtml(s,x);
   h+='<div class="field"><label>Notiz</label><textarea id="noteText" placeholder="Was das Ritual wissen soll">'+esc(x.note||"")+'</textarea></div>';
   return h}
 function renderSheet(){var sh=S.sheet;if(!sh)return;var el=isWide()?$("#panel-in"):$("#sheet"),h="",out=false;
@@ -592,13 +674,13 @@ function renderSheet(){var sh=S.sheet;if(!sh)return;var el=isWide()?$("#panel-in
     var label='<span>'+esc(fmtD(effDate))+' · '+esc(SLOTS[effSlot]||effSlot)+(tl?" · "+esc(tl):"")+'</span>';
     if(sh.step==="detail"){h=sheetTop(label)+'<h2>'+esc(s.title)+'</h2><div class="chips">'+(s.id===w.keySessionId?'<span class="chip key">Schlüsseleinheit</span>':'')+'<span class="chip">'+esc(mins(s.durationMin))+(s.slotMin&&s.slotMin!==s.durationMin?" · Slot "+esc(mins(s.slotMin)):"")+'</span>'+(s.tss?'<span class="chip">TSS '+s.tss+'</span>':'')+(s.intensity!=="key"?'<span class="chip">'+esc(INT[s.intensity]||s.intensity)+'</span>':'')+(s.shoe?'<span class="chip">'+esc(s.shoe)+'</span>':'')+(s.location?'<span class="chip">'+esc(s.location)+'</span>':'')+(s.fitRequired?'<span class="chip warn">.fit Pflicht</span>':'')+(mv?'<span class="chip">verschoben von '+esc(fmtD(s.date))+'</span>':'')+(s.neverCut?'<span class="chip">fällt nie</span>':(s.emergencyRank?'<span class="chip">Notfall Position '+s.emergencyRank+'</span>':''))+'</div>';
       if(x.status&&x.status!=="open")h+='<div class="status"><b>'+esc(STATUS[x.status])+'</b>'+(x.actualMin!=null?'<span>'+esc(mins(x.actualMin))+'</span>':'')+(x.rpe?'<span>RPE '+x.rpe+'</span>':'')+(x.skipReason?'<span>'+esc(x.skipReason)+'</span>':'')+'</div>';
+      if(s.steer)h+='<p class="steerline"><b>Steuergröße:</b> '+esc(s.steer)+'</p>';
       if(s.gate)h+='<div class="rule">'+ic("warn")+'<span>'+esc(s.gate)+'</span></div>';
       if((s.cutOrder||[]).length||(s.never||[]).length)h+='<div class="block"><h4>Wenn es eng wird, in dieser Reihenfolge kürzen</h4>'+((s.cutOrder||[]).length?'<ol class="cut">'+s.cutOrder.map(function(c){return '<li>'+esc(c)+'</li>'}).join("")+'</ol>':'')+((s.never||[]).length?'<p class="never"><b>Nie:</b> '+esc(s.never.join(", "))+'</p>':'')+'</div>';
-      if(s.steer)h+='<div class="block"><h4>Steuergröße</h4><p>'+esc(s.steer)+'</p></div>';
-      (s.blocks||[]).forEach(function(b){h+='<div class="block"><h4>'+esc(b.label)+'</h4><p'+(b.label==="Vorab"?' class="small"':'')+'>'+esc(b.text)+'</p></div>'});
-      if(s.nutrition)h+='<div class="block"><h4>Ernährung</h4><p class="small">'+esc(s.nutrition)+'</p></div>';
+      h+=stepsHtml(s,x,ro);
+      h+=hintsHtml(s);
       if(x.note)h+='<div class="block"><h4>Deine Notiz</h4><div class="mine">'+esc(x.note)+'</div></div>';
-      if(!ro){h+='<div class="stack dock">'+(x.status==="open"||!x.status?'<button class="btn full" data-finish="'+esc(s.id)+'">Erledigt</button><div class="btn-row"><button class="btn ghost" data-partial="'+esc(s.id)+'">Gekürzt</button><button class="btn ghost" data-skip="'+esc(s.id)+'">Ausgelassen</button></div>':'<button class="btn ghost full" data-edit="'+esc(s.id)+'">Details ändern</button><button class="btn text full" data-reopen="'+esc(s.id)+'">Zurück auf offen</button>')+'<button class="btn text full" data-move="'+esc(s.id)+'">'+ic("move")+' Verschieben</button></div>'}}
+      if(!ro){h+='<div class="stack dock">'+(x.status==="open"||!x.status?'<button class="btn full" data-finish="'+esc(s.id)+'">Erledigt</button><div class="btn-row three"><button class="btn ghost" data-partial="'+esc(s.id)+'">Gekürzt</button><button class="btn ghost" data-skip="'+esc(s.id)+'">Ausgelassen</button><button class="btn ghost" data-move="'+esc(s.id)+'" aria-label="Verschieben">'+ic("move")+'<span>Schieben</span></button></div>':'<div class="btn-row three"><button class="btn ghost" data-edit="'+esc(s.id)+'">Details</button><button class="btn ghost" data-reopen="'+esc(s.id)+'">Wieder offen</button><button class="btn ghost" data-move="'+esc(s.id)+'" aria-label="Verschieben">'+ic("move")+'<span>Schieben</span></button></div>')+'</div>'}}
     else if(sh.step==="done"||sh.step==="partial"){out=true;h=sheetTop(label+'<span style="margin-left:8px;color:var(--ink-3)">'+(sh.step==="partial"?"Gekürzt":"Erledigt")+'</span>')+'<h2>'+(sh.step==="partial"?"Was ist geblieben?":"Erledigt. Noch Details?")+'</h2>'+detailForm(s,x,sh.step)+'<div class="stack dock"><button class="btn full" data-save-details="'+esc(s.id)+'" data-mode="'+sh.step+'">Speichern</button>'+(sh.step==="done"?'<button class="btn text full" data-close="1">Ohne Details fertig</button>':'')+'</div>'}
     else if(sh.step==="skipped"){out=true;var adj=sh.adjusted!=null?sh.adjusted:(x.status==="adjusted");h=sheetTop(label)+'<h2>Ausgelassen. Warum?</h2><p class="lede" style="max-width:none">Ein Grund hilft dem Ritual. Abgesprochene Anpassungen aus Gesundheitsgründen zählen neutral.</p><div class="chiprow">'+REASONS.map(function(r){return '<button class="chipbtn'+(sh.reason===r?" on":"")+'" data-reason="'+esc(r)+'">'+esc(r)+'</button>'}).join("")+'</div><input type="text" id="reasonText" placeholder="oder eigener Grund" value="'+esc(sh.reason&&REASONS.indexOf(sh.reason)<0?sh.reason:(x.skipReason&&REASONS.indexOf(x.skipReason)<0?x.skipReason:""))+'" autocomplete="off"><button class="chipbtn'+(adj?" on":"")+'" data-adjusted="1">'+ic("check")+' Mit dem Coach abgesprochen, angepasst</button><div class="stack dock"><button class="btn full" data-save-skip="'+esc(s.id)+'">Speichern</button></div>'}
     else if(sh.step==="move"){out=true;var tD=sh.date||effDate,tS=sh.slot||effSlot,tT=sh.time!=null?sh.time:"";var warns=checkMove(s.id,tD,tS,tT||null);var days=[];for(var i=0;i<7;i++)days.push(addDays(w.start,i));
@@ -608,10 +690,10 @@ function renderSheet(){var sh=S.sheet;if(!sh)return;var el=isWide()?$("#panel-in
   else if(sh.type==="day"){var d=sh.date,ds=S.state.days[d]||{},w2=week(),dd=dayOf(w2,d),sw=w2&&w2.sleepWindow;var win=dd.bedWindow||(sw?(dd.earlyAlarm&&sw.earlyFrom?sw.earlyFrom+"-"+sw.earlyTo:sw.from+"-"+sw.to):"");var prev=addDays(d,-1);
     h=sheetTop('<span>'+esc(fmtDL(d))+'</span>')+'<h2>Nacht und Gewicht.</h2>'+(win?'<div class="rule soft">'+ic("moon")+'<span>Schlaffenster am Vorabend ('+esc(fmtD(prev))+'): '+esc(win)+(dd.earlyAlarm?", Frühtag, Unterkante":"")+'.</span></div>':'')+'<div class="field"><label>Bettzeit am Vorabend</label><input type="time" id="bedtime" value="'+esc(ds.bedtime||"")+'"></div><div class="field inline"><label style="flex:none;min-width:90px">Schlaf</label><input type="number" inputmode="decimal" step="0.1" id="sleepH" value="'+esc(ds.sleepH==null?"":ds.sleepH)+'" placeholder="optional"><span class="unit">h</span></div><div class="field inline"><label style="flex:none;min-width:90px">Gewicht</label><input type="number" inputmode="decimal" step="0.1" id="weight" value="'+esc(ds.weight==null?"":ds.weight)+'" placeholder="nüchtern"><span class="unit">Kilo</span></div><div class="stack dock"><button class="btn full" data-save-day="'+d+'">Speichern</button></div>'}
   else if(sh.type==="connect"){h=sheetTop("Verbinden")+'<h2>Schlüssel für dieses Gerät.</h2><p class="lede" style="max-width:none">Plan und Erfassung liegen im privaten Repository trainingswoche-data. Die App braucht einen Schlüssel, der nur dieses eine Repository lesen und schreiben darf.</p><ol class="olist"><li>Öffne <b>github.com/settings/personal-access-tokens/new</b>, angemeldet als benebxr.</li><li>Name: <b>trainingswoche iPhone</b> oder <b>trainingswoche iPad</b>. Ablauf: <b>No expiration</b>.</li><li>Repository access: <b>Only select repositories</b>, wähle <b>trainingswoche-data</b>.</li><li>Repository permissions: <b>Contents: Read and write</b>. Sonst nichts.</li><li>Generate, Schlüssel kopieren, unten einfügen.</li></ol><input type="password" class="key" id="ghKey" placeholder="github_pat_…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="GitHub-Schlüssel"><p class="note" style="text-align:left">Der Schlüssel bleibt auf diesem Gerät. Beim Trennen werden Schlüssel und alle geladenen Daten hier gelöscht.</p><div class="stack"><button class="btn full" data-connect-save="1">Verbinden</button><button class="btn text full" data-close="1">Nicht jetzt</button></div>'}
-  el.className=(isWide()?'panel-in':'sheet')+(out?' s-out':'');el.innerHTML=h;el.scrollTop=0}
+  var keep=sh.keepScroll?el.scrollTop:0;sh.keepScroll=false;el.className=(isWide()?'panel-in':'sheet')+(out?' s-out':'');el.innerHTML=h;el.scrollTop=keep}
 function toast(t){var e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove("on")},2400)}
 function readDetails(s,x,mode){var e=clone(x);var am=$("#actualMin");var v=am?parseInt(am.value,10):NaN;e.actualMin=isNaN(v)?s.durationMin:v;if(S.sheet.rpe!=null)e.rpe=S.sheet.rpe;var nt=$("#noteText");if(nt)e.note=nt.value.trim();e.answers=e.answers||{};
-  (s.asks||[]).forEach(function(a){if(a.type==="yesno"){if(S.sheet.yn&&a.id in S.sheet.yn)e.answers[a.id]=S.sheet.yn[a.id];return}var inp=$("#ask-"+a.id);if(!inp)return;var val=inp.value.trim();if(!val){delete e.answers[a.id];return}if(a.type==="number")e.answers[a.id]=parseFloat(val.replace(",","."));else if(a.type==="numberList")e.answers[a.id]=val.split(/[,;\s]+/).filter(Boolean).map(function(n){return parseFloat(n.replace(",","."))});else e.answers[a.id]=val});
+  (s.asks||[]).forEach(function(a){if(a.type==="yesno"||a.type==="check"){if(S.sheet.yn&&a.id in S.sheet.yn)e.answers[a.id]=S.sheet.yn[a.id];return}if(a.type==="choice"){if(S.sheet.ch&&a.id in S.sheet.ch){if(S.sheet.ch[a.id])e.answers[a.id]=S.sheet.ch[a.id];else delete e.answers[a.id]}return}var inp=$("#ask-"+a.id);if(!inp)return;var val=inp.value.trim();if(!val){delete e.answers[a.id];return}if(a.type==="number")e.answers[a.id]=parseFloat(val.replace(",","."));else if(a.type==="numberList")e.answers[a.id]=val.split(/[,;\s]+/).filter(Boolean).map(function(n){return parseFloat(n.replace(",","."))});else e.answers[a.id]=val});
   if(mode==="partial")e.cut=S.sheet.cut||e.cut||[];return e}
 
 /* ---------- events ---------- */
@@ -635,6 +717,10 @@ document.addEventListener("click",function(ev){var wk=ev.target.closest&&ev.targ
   if(d.edit){var xx=st(d.edit);sh.step=xx.status==="partial"?"partial":xx.status==="skipped"||xx.status==="adjusted"?"skipped":"done";sh.cut=(xx.cut||[]).slice();sh.reason=xx.skipReason||null;sh.adjusted=xx.status==="adjusted";renderSheet();return}
   if(d.reopen){saveSession(d.reopen,function(x){x.status="open";x.doneAt=null});closeSheet();toast("Wieder offen");return}
   if(d.move){sh.step="move";var xm=st(d.move);sh.date=xm.movedTo?xm.movedTo.date:null;sh.slot=xm.movedTo?xm.movedTo.slot:null;sh.time=xm.movedTo?(xm.movedTo.startBy||""):"";renderSheet();return}
+  if(d.stp!==undefined&&sh&&sh.type==="session"){var ix=+d.stp;saveSession(sh.id,function(x){var a=(x.steps||[]).slice(),p=a.indexOf(ix);if(p>=0)a.splice(p,1);else a.push(ix);a.sort(function(m,n){return m-n});x.steps=a});sh.keepScroll=true;renderSheet();return}
+  if(d.stpReset&&sh){saveSession(sh.id,function(x){x.steps=[]});sh.keepScroll=true;renderSheet();return}
+  if(d.askCh){sh.ch=sh.ch||{};var cv=d.v;sh.ch[d.askCh]=sh.ch[d.askCh]===cv?null:cv;var sibs=t.parentNode.querySelectorAll("button");for(var q2=0;q2<sibs.length;q2++)sibs[q2].classList.toggle("on",sibs[q2]===t&&sh.ch[d.askCh]===cv);return}
+  if(d.askChk){sh.yn=sh.yn||{};var cur0=(d.askChk in sh.yn)?sh.yn[d.askChk]:((st(sh.id).answers||{})[d.askChk]===true);sh.yn[d.askChk]=!cur0;t.classList.toggle("on",!cur0);t.setAttribute("aria-pressed",String(!cur0));return}
   if(d.rpe){sh.rpe=+d.rpe;var btns=document.querySelectorAll("[data-rpe]");for(var k=0;k<btns.length;k++)btns[k].classList.toggle("on",+btns[k].dataset.rpe===sh.rpe);return}
   if(d.cut!==undefined){sh.cut=sh.cut||[];var ci=+d.cut,pos=sh.cut.indexOf(ci);if(pos>=0)sh.cut.splice(pos,1);else sh.cut.push(ci);t.classList.toggle("on",pos<0);return}
   if(d.askYn){sh.yn=sh.yn||{};sh.yn[d.askYn]=d.v==="1";var sib=t.parentNode.querySelectorAll("button");for(var q=0;q<sib.length;q++)sib[q].classList.toggle("on",sib[q]===t);return}
